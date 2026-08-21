@@ -1,0 +1,53 @@
+pipeline:
+  name: kserve-m0-apply
+  identifier: kservem0apply
+  projectIdentifier: sunnyplayground
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+    milestone: m0
+  description: Init/plan/apply on the testiacmnew cluster via account.k8connnew. Set offline_plan=false.
+  variables:
+    - name: runner_namespace
+      type: String
+      description: Namespace that can schedule the IaCM step pods (delegate cluster).
+      value: <+input>.default(harness-delegate-ng)
+  stages:
+    - stage:
+        name: apply-on-cluster
+        identifier: applyoncluster
+        description: Run OpenTofu in-cluster so InheritFromDelegate kube credentials work.
+        type: IACM
+        spec:
+          workspace: <+input>
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8connnew
+              namespace: <+pipeline.variables.runner_namespace>
+              automountServiceAccountToken: true
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: init
+                  identifier: init
+                  timeout: 10m
+                  spec:
+                    command: init
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: plan
+                  identifier: plan
+                  timeout: 10m
+                  spec:
+                    command: plan
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: apply
+                  identifier: apply
+                  timeout: 15m
+                  spec:
+                    command: apply
+        tags: {}

@@ -1,0 +1,14 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: sklearn-iris
+  namespace: ${namespace}
+  labels:
+    app.kubernetes.io/part-of: kserve-iacm-poc
+    app.kubernetes.io/managed-by: iacm
+spec:
+  predictor:
+    minReplicas: 1
+    maxReplicas: 1
+    sklearn:
+      storageUri: gs://kfserving-examples/models/sklearn/1.0/model

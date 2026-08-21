@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sklearn-iris
+description: Tiny chart wrapping one KServe InferenceService for the M0 Helm fallback.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

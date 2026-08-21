@@ -1,0 +1,40 @@
+pipeline:
+  name: kserve-m0-offline-plan
+  identifier: kservem0offlineplan
+  projectIdentifier: sunnyplayground
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+    milestone: m0
+  description: Cloud init+plan with no cluster credentials. Use workspace terraform variable offline_plan=true.
+  stages:
+    - stage:
+        name: offline-plan
+        identifier: offlineplan
+        description: Prove whether OpenTofu can plan KServe YAML without a live apiserver.
+        type: IACM
+        spec:
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          workspace: <+input>
+          execution:
+            steps:
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: init
+                  identifier: init
+                  timeout: 10m
+                  spec:
+                    command: init
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: plan
+                  identifier: plan
+                  timeout: 10m
+                  spec:
+                    command: plan
+        tags: {}
