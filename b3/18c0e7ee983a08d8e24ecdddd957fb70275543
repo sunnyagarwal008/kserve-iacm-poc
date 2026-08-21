@@ -1,0 +1,19 @@
+experiments/m0/02-alekc-kubectl/providers.tf
+  s_73f5f7ffeca0e6::t_29e469736d3ce4 1-3,5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "b318c0e7ee983a08d8e24ecdddd957fb70275543",
+  "prompts": {},
+  "sessions": {
+    "s_73f5f7ffeca0e6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6f1fbb9c-d2ad-4e65-b039-a6cce62cb4a2",
+        "model": "unknown"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>"
+    }
+  }
+}
