@@ -6,6 +6,6 @@ variable "offline_plan" {
 
 variable "namespace" {
   type        = string
-  description = "Namespace for the InferenceService."
-  default     = "kserve-demo"
+  description = "Existing namespace the step service account can write to."
+  default     = "harness-delegate-ng"
 }
