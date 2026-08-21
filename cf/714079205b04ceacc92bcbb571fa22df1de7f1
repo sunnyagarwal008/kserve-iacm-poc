@@ -1,0 +1,34 @@
+experiments/m0/02-alekc-kubectl/variables.tf
+  s_73f5f7ffeca0e6::t_e94ac05ae5769a 9-10
+experiments/m0/02-alekc-kubectl/main.tf
+  s_73f5f7ffeca0e6::t_8f82d5014ef807 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "cf714079205b04ceacc92bcbb571fa22df1de7f1",
+  "prompts": {
+    "73f5f7ffeca0e602": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6f1fbb9c-d2ad-4e65-b039-a6cce62cb4a2",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  },
+  "sessions": {
+    "s_73f5f7ffeca0e6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6f1fbb9c-d2ad-4e65-b039-a6cce62cb4a2",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>"
+    }
+  }
+}
