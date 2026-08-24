@@ -1,0 +1,25 @@
+service:
+  name: qwen25-05b-cd
+  identifier: qwen2505bcd
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  tags:
+    poc: kserve-cd
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: inferenceservice
+            type: K8sManifest
+            spec:
+              skipResourceVersioning: true
+              store:
+                type: Github
+                spec:
+                  connectorRef: sunnygithub
+                  gitFetchType: Branch
+                  repoName: kserve-iacm-poc
+                  branch: main
+                  paths:
+                    - cd/qwen25-05b

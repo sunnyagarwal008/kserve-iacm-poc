@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: kserve-m0
+  identifier: kservem0
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  environmentRef: kservestaging
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: iacteamstandard
+    namespace: kserve-m0
+    releaseName: qwen2505bcd-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false

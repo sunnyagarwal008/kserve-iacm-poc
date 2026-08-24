@@ -1,0 +1,17 @@
+policy:
+  identifier: kserveservemanifest
+  name: kserve-serve-manifest
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  type: Custom
+  file: policies/kserve-serve-manifest.rego
+policySet:
+  identifier: kserveservemanifest
+  name: kserve-serve-manifest
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  type: Custom
+  action: onstep
+  enforcement: error
+  policies:
+    - identifier: kserveservemanifest

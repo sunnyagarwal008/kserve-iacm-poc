@@ -1,0 +1,8 @@
+environment:
+  name: kserve-staging
+  identifier: kservestaging
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  type: PreProduction
+  tags:
+    poc: kserve-cd
