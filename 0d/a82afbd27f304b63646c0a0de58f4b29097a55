@@ -1,0 +1,67 @@
+stacks/kserve-platform-demo/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-6
+modules/kserve-platform/tests/platform.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-28
+stacks/kserve-platform-demo/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-11
+stacks/kserve-platform-demo/outputs.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-14
+modules/kserve-platform/versions.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-10
+modules/kserve-platform/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-16
+stacks/kserve-platform-demo/providers.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-9
+harness/pipelines/kserve-platform-install.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-47
+modules/kserve-platform/outputs.tf
+  s_a40575898a4282::t_1eb96aceca1ba3 1-14
+kserve-iacm-poc-plan.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 5-7,14-28,31-33,35-37,39,45,61-62,71,75,79-85,87,89-91,93,95,99,101,105,108,111,115,125,137-138,147,149,158-162,165,175,179,185-186,189
+stacks/kserve-platform-demo/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-12
+harness/delegates/kserve-m0-delegate.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-117
+experiments/m0/01-hashicorp-kubernetes/providers.tf
+  6f1fbb9c-d2ad-4e65-b039-a6cce62cb4a2 1
+stacks/kserve-platform-demo/versions.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-10
+harness/connectors/iac-team-standard.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-3,5-13
+  s_a40575898a4282::t_9393a2957b8bef 4
+harness/pipelines/kserve-m0-rbac-check.yaml
+  6f1fbb9c-d2ad-4e65-b039-a6cce62cb4a2 1-84
+modules/kserve-platform/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "0da82afbd27f304b63646c0a0de58f4b29097a55",
+  "prompts": {
+    "73f5f7ffeca0e602": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6f1fbb9c-d2ad-4e65-b039-a6cce62cb4a2",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 85,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 413,
+      "total_deletions": 40,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
