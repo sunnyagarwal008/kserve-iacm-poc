@@ -1,0 +1,44 @@
+stacks/fraud-llm-staging/outputs.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-20
+stacks/fraud-llm-staging/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-12
+harness/pipelines/kserve-serve-apply.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-47
+modules/kserve-llm-inference-service/outputs.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-34
+stacks/fraud-llm-staging/versions.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-10
+stacks/fraud-llm-staging/providers.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-9
+stacks/fraud-llm-staging/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-46
+stacks/fraud-llm-staging/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-12
+modules/kserve-llm-inference-service/tests/serve.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-84
+modules/kserve-llm-inference-service/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-51
+modules/kserve-llm-inference-service/versions.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-10
+modules/kserve-llm-inference-service/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "527fd2c1193a57b63157e10667be87bd8b3e897f",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 482,
+      "total_deletions": 32,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
