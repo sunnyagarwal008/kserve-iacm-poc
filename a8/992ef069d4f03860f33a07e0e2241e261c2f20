@@ -1,0 +1,44 @@
+harness/cd/test_yaml_ids.py
+  95631d26-d309-4b08-a14a-d147dd4b5911 1-38
+harness/cd/infrastructure-kservem0.yaml
+  95631d26-d309-4b08-a14a-d147dd4b5911 1-13
+harness/policies/kserve-serve-manifest.yaml
+  95631d26-d309-4b08-a14a-d147dd4b5911 1-17
+harness/cd/environment-kservestaging.yaml
+  95631d26-d309-4b08-a14a-d147dd4b5911 1-8
+harness/pipelines/model-cd-deploy.yaml
+  95631d26-d309-4b08-a14a-d147dd4b5911 1-97
+harness/cd/service-qwen2505bcd.yaml
+  95631d26-d309-4b08-a14a-d147dd4b5911 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "a8992ef069d4f03860f33a07e0e2241e261c2f20",
+  "prompts": {
+    "091596bce8639e83": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "95631d26-d309-4b08-a14a-d147dd4b5911",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 198,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 3,
+      "total_deletions": 2,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
