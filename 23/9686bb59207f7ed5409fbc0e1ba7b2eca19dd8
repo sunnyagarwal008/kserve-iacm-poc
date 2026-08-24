@@ -1,0 +1,32 @@
+policies/kserve-serve-plan_test.rego
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-41
+stacks/fraud-llm-staging/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 12-13
+stacks/fraud-llm-staging/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 48-56
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 47
+policies/kserve-serve-plan.rego
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-59
+harness/pipelines/kserve-serve-apply.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 41-52
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "239686bb59207f7ed5409fbc0e1ba7b2eca19dd8",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 124,
+      "total_deletions": 2,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
