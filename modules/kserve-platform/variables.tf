@@ -14,3 +14,22 @@ variable "namespace" {
   description = "Namespace where KServe control-plane resources are installed."
   default     = "kserve"
 }
+
+variable "ingress_class_name" {
+  type        = string
+  description = "IngressClass used by the dedicated KServe ingress controller."
+  default     = "kserve"
+}
+
+variable "ingress_nginx_version" {
+  type        = string
+  description = "ingress-nginx Helm chart version."
+  default     = "4.12.3"
+}
+
+variable "ingress_domain" {
+  type        = string
+  default     = null
+  nullable    = true
+  description = "Public DNS suffix for InferenceService URLs. When null, uses <load-balancer-ip>.sslip.io."
+}

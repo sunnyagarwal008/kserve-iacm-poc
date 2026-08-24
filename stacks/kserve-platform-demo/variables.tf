@@ -9,3 +9,10 @@ variable "namespace" {
   description = "Namespace for the KServe control plane."
   default     = "kserve"
 }
+
+variable "ingress_domain" {
+  type        = string
+  default     = null
+  nullable    = true
+  description = "Public DNS suffix for InferenceService URLs. When null, uses <load-balancer-ip>.sslip.io."
+}

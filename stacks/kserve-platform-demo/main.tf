@@ -3,4 +3,5 @@ module "kserve_platform" {
 
   kserve_version = var.kserve_version
   namespace      = var.namespace
+  ingress_domain = var.ingress_domain
 }

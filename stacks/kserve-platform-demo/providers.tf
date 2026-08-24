@@ -7,3 +7,9 @@ provider "helm" {
     cluster_ca_certificate = null
   }
 }
+
+provider "kubernetes" {
+  host                   = null
+  token                  = null
+  cluster_ca_certificate = null
+}
