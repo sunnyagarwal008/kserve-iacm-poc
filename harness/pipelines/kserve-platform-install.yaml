@@ -1,0 +1,47 @@
+pipeline:
+  name: kserve-platform-install
+  identifier: kserveplatforminstall
+  projectIdentifier: sunnyplayground
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+    workspace: install
+  description: Install or upgrade KServe in Standard mode through the kserve-platform-demo IaCM workspace.
+  stages:
+    - stage:
+        name: install-kserve
+        identifier: installkserve
+        type: IACM
+        spec:
+          workspace: kserveplatformdemo
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: iacteamstandard
+              namespace: kserve-m0
+              automountServiceAccountToken: true
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: init
+                  identifier: init
+                  timeout: 10m
+                  spec:
+                    command: init
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: plan
+                  identifier: plan
+                  timeout: 15m
+                  spec:
+                    command: plan
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: apply
+                  identifier: apply
+                  timeout: 20m
+                  spec:
+                    command: apply
+        tags: {}

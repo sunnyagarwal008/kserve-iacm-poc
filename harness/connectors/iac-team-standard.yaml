@@ -1,0 +1,13 @@
+connector:
+  name: iac-team-standard
+  identifier: iacteamstandard
+  description: GKE iac-play/us-west1/iac-team-standard via project K8s delegate kserve-m0-delegate (in-cluster; API is master-authorized-networks).
+  orgIdentifier: default
+  projectIdentifier: sunnyplayground
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+      - kserve-m0-delegate
+    ignoreTestConnection: false

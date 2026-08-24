@@ -1,0 +1,84 @@
+pipeline:
+  name: kserve-m0-rbac-check
+  identifier: kservem0rbaccheck
+  projectIdentifier: sunnyplayground
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+    milestone: m0
+  description: List RBAC of the IaCM/CI step service account on account.k8connnew (not the delegate SA).
+  stages:
+    - stage:
+        name: rbac-check
+        identifier: rbaccheck
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8connnew
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: self-subject-rules
+                  identifier: selfsubjectrules
+                  timeout: 10m
+                  spec:
+                    connectorRef: sunnyDocker
+                    image: curlimages/curl:8.11.1
+                    shell: Sh
+                    command: |-
+                      set -eu
+                      SA_NS=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+                      TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+                      CACERT=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+                      echo "identity: system:serviceaccount:${SA_NS}:default"
+                      echo "KUBERNETES_SERVICE_HOST=${KUBERNETES_SERVICE_HOST:-}"
+                      API="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT_HTTPS}"
+                      review() {
+                        ns="$1"
+                        echo "===== SelfSubjectRulesReview namespace=${ns} ====="
+                        curl -sS --cacert "$CACERT" -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" \
+                          -X POST "${API}/apis/authorization.k8s.io/v1/selfsubjectrulesreviews" \
+                          -d "{\"apiVersion\":\"authorization.k8s.io/v1\",\"kind\":\"SelfSubjectRulesReview\",\"spec\":{\"namespace\":\"${ns}\"}}"
+                        echo
+                      }
+                      cani() {
+                        verb="$1"; resource="$2"; ns="$3"; group="$4"
+                        echo "===== can-i ${verb} ${group}/${resource} ns=${ns} ====="
+                        if [ -n "$group" ]; then
+                          group_json="\"group\":\"${group}\","
+                        else
+                          group_json=""
+                        fi
+                        if [ -n "$ns" ]; then
+                          ns_json="\"namespace\":\"${ns}\","
+                        else
+                          ns_json=""
+                        fi
+                        curl -sS --cacert "$CACERT" -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" \
+                          -X POST "${API}/apis/authorization.k8s.io/v1/selfsubjectaccessreviews" \
+                          -d "{\"apiVersion\":\"authorization.k8s.io/v1\",\"kind\":\"SelfSubjectAccessReview\",\"spec\":{\"resourceAttributes\":{${ns_json}${group_json}\"verb\":\"${verb}\",\"resource\":\"${resource}\"}}}"
+                        echo
+                      }
+                      review "harness-delegate-ng"
+                      cani create namespaces "" ""
+                      cani patch namespaces "" ""
+                      cani create inferenceservices harness-delegate-ng serving.kserve.io
+                      cani get inferenceservices harness-delegate-ng serving.kserve.io
+                      cani patch inferenceservices harness-delegate-ng serving.kserve.io
+                      cani delete inferenceservices harness-delegate-ng serving.kserve.io
+                      cani create configmaps harness-delegate-ng ""
+                      cani get pods harness-delegate-ng ""
+                      cani get customresourcedefinitions "" apiextensions.k8s.io
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: MarkAsFailure
