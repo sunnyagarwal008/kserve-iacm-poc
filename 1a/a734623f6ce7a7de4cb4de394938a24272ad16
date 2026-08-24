@@ -1,0 +1,40 @@
+harness/connectors/model-deployment-k8s.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-11,13
+  s_a40575898a4282::t_2bfd6da3c19ab9 12
+modules/kserve-llm-inference-service/tests/serve.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 57-60
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 56
+modules/kserve-platform/tests/platform.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 48-55
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 47
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 56
+harness/pipelines/platform-deploy.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-47
+modules/kserve-platform/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 21,73,81-84,124-127
+modules/kserve-llm-inference-service/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 48
+harness/pipelines/model-deploy.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-60
+harness/connectors/model-deployment-github.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "1aa734623f6ce7a7de4cb4de394938a24272ad16",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 168,
+      "total_deletions": 10,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
