@@ -1,0 +1,22 @@
+harness/pipelines/model-cd-deploy.yaml
+  8b0cc457-e8dd-40a3-9206-cc3a4565a424 37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "0043f835a933f238af909833461a297bc3f0d336",
+  "prompts": {
+    "63c0d74cfc8caf10": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "8b0cc457-e8dd-40a3-9206-cc3a4565a424",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
