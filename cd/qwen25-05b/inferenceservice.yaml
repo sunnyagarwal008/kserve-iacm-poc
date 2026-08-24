@@ -1,0 +1,30 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: qwen25-05b-cd
+  namespace: kserve-m0
+  labels:
+    app.kubernetes.io/part-of: kserve-iacm-poc
+    app.kubernetes.io/managed-by: harness-cd
+    team: ml-platform
+    cost_center: kserve-poc
+  annotations:
+    kserve.poc/gpu-count: "0"
+    kserve.poc/gpu-type: l4
+spec:
+  predictor:
+    minReplicas: 1
+    maxReplicas: 1
+    model:
+      modelFormat:
+        name: huggingface
+      args:
+        - --backend=huggingface
+      storageUri: hf://Qwen/Qwen2.5-0.5B-Instruct
+      resources:
+        requests:
+          cpu: "2"
+          memory: 8Gi
+        limits:
+          cpu: "4"
+          memory: 12Gi
