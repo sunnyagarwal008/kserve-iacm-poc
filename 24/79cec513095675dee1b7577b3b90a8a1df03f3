@@ -1,0 +1,27 @@
+harness/pipelines/kserve-m0-apply.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 9,13-14,26
+modules/kserve-platform/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 26-34
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 25
+modules/kserve-platform/tests/platform.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 17-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "2479cec513095675dee1b7577b3b90a8a1df03f3",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 19,
+      "total_deletions": 6,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
