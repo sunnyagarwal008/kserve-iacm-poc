@@ -1,5 +1,5 @@
 module "kserve_platform" {
-  source  = "qa.harness.io/25NKDX79QPC-YTyninmxRQu5st9wY_RziJH_pTw8_p2g/kserve-platform/kubernetes"
+  source  = "qa.harness.io/25NKDX79QPC-YTyninmxRQ/kserve-platform/kubernetes"
   version = "v1.0.0"
 
   kserve_version = var.kserve_version
