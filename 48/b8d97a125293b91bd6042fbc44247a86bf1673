@@ -1,0 +1,48 @@
+cd/qwen25-05b/README.md
+  s_3ff424064b0e75::t_63aa310ab3b93a 1-4
+cd/qwen25-05b/inferenceservice.yaml
+  s_3ff424064b0e75::t_63aa310ab3b93a 1-30
+cd/qwen25-05b/test_manifest.py
+  d3826362-9bf4-4ac5-976c-10f4bbaafd6c 1-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "48b8d97a125293b91bd6042fbc44247a86bf1673",
+  "prompts": {
+    "3ff424064b0e7599": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d3826362-9bf4-4ac5-976c-10f4bbaafd6c",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 53,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 22,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  },
+  "sessions": {
+    "s_3ff424064b0e75": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d3826362-9bf4-4ac5-976c-10f4bbaafd6c",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>"
+    }
+  }
+}
