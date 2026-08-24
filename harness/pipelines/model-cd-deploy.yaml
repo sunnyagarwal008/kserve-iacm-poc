@@ -34,7 +34,7 @@ pipeline:
                       spec:
                         script: |
                           set -euo pipefail
-                          url = "https://raw.githubusercontent.com/sunnyagarwal008/kserve-iacm-poc/main/cd/qwen25-05b/inferenceservice.yaml"
+                          url="https://raw.githubusercontent.com/sunnyagarwal008/kserve-iacm-poc/main/cd/qwen25-05b/inferenceservice.yaml"
                           manifest=$(curl --fail --silent --show-error --location "$url")
                           value() {
                             printf '%s\n' "$manifest" | awk -F': ' -v pattern="$1" '$0 ~ pattern {print $2; exit}' | tr -d '"'
