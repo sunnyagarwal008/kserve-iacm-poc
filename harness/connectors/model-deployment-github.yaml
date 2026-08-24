@@ -1,0 +1,22 @@
+connector:
+  name: sunny-github
+  identifier: sunnygithub
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  type: Github
+  spec:
+    executeOnDelegate: false
+    type: Account
+    url: https://github.com/sunnyagarwal008
+    validationRepo: kserve-iacm-poc
+    authentication:
+      type: Http
+      spec:
+        type: UsernameToken
+        spec:
+          username: sunnyagarwal008
+          tokenRef: org.sunny-github-secret
+    apiAccess:
+      type: Token
+      spec:
+        tokenRef: org.sunny-github-secret

@@ -45,7 +45,7 @@ resource "kubectl_manifest" "inference_service" {
 
   server_side_apply = true
   field_manager     = "iacm-kserve-poc"
-  force_conflicts   = false
+  force_conflicts   = true
   wait              = false
   wait_for_rollout  = false
 }

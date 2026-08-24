@@ -1,0 +1,47 @@
+pipeline:
+  name: platform-deploy
+  identifier: platformdeploy
+  projectIdentifier: Model_Deployment
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+    workspace: install
+  description: Install or upgrade KServe through the kserve-platform workspace.
+  stages:
+    - stage:
+        name: install-kserve
+        identifier: installkserve
+        type: IACM
+        spec:
+          workspace: kserve_platform
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: iacteamstandard
+              namespace: kserve-m0
+              automountServiceAccountToken: true
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: init
+                  identifier: init
+                  timeout: 10m
+                  spec:
+                    command: init
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: plan
+                  identifier: plan
+                  timeout: 15m
+                  spec:
+                    command: plan
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: apply
+                  identifier: apply
+                  timeout: 20m
+                  spec:
+                    command: apply
+        tags: {}

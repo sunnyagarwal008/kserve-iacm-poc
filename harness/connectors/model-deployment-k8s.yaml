@@ -1,0 +1,13 @@
+connector:
+  name: iac-team-standard
+  identifier: iacteamstandard
+  description: GKE iac-play/us-west1/iac-team-standard via model-deployment-delegate.
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+      - model-deployment-delegate
+    ignoreTestConnection: false

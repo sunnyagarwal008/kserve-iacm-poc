@@ -18,6 +18,7 @@ resource "helm_release" "ingress_nginx" {
   create_namespace = true
   wait             = true
   timeout          = 600
+  upgrade_install  = true
 
   set {
     name  = "fullnameOverride"
@@ -69,6 +70,7 @@ resource "helm_release" "kserve_crd" {
   create_namespace = true
   wait             = true
   timeout          = 600
+  upgrade_install  = true
 }
 
 resource "helm_release" "kserve_resources" {
@@ -76,9 +78,10 @@ resource "helm_release" "kserve_resources" {
   chart      = "oci://ghcr.io/kserve/charts/kserve-resources"
   version    = var.kserve_version
   namespace  = var.namespace
-  wait       = true
-  timeout    = 900
-  depends_on = [helm_release.kserve_crd, helm_release.ingress_nginx]
+  wait            = true
+  timeout         = 900
+  upgrade_install = true
+  depends_on      = [helm_release.kserve_crd, helm_release.ingress_nginx]
 
   set {
     name  = "kserve.controller.deploymentMode"
@@ -118,9 +121,10 @@ resource "helm_release" "kserve_runtime_configs" {
   chart      = "oci://ghcr.io/kserve/charts/kserve-runtime-configs"
   version    = var.kserve_version
   namespace  = var.namespace
-  wait       = true
-  timeout    = 600
-  depends_on = [helm_release.kserve_resources]
+  wait            = true
+  timeout         = 600
+  upgrade_install = true
+  depends_on      = [helm_release.kserve_resources]
 
   set {
     name  = "kserve.servingruntime.enabled"

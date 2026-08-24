@@ -45,6 +45,16 @@ run "plans_standard_mode_install" {
   }
 
   assert {
+    condition = alltrue([
+      helm_release.ingress_nginx.upgrade_install,
+      helm_release.kserve_crd.upgrade_install,
+      helm_release.kserve_resources.upgrade_install,
+      helm_release.kserve_runtime_configs.upgrade_install,
+    ])
+    error_message = "Helm releases must upgrade-install so an existing cluster release does not fail apply."
+  }
+
+  assert {
     condition     = helm_release.ingress_nginx.chart == "ingress-nginx"
     error_message = "The platform must install a dedicated ingress controller for KServe."
   }

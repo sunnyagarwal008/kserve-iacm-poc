@@ -53,6 +53,11 @@ run "plans_qwen_cpu_huggingface" {
     condition     = output.gpu_type == "l4" && output.gpu_count == 0
     error_message = "Declared GPU intent must remain an output even when the demo runs on CPU."
   }
+
+  assert {
+    condition     = kubectl_manifest.inference_service.force_conflicts == true
+    error_message = "Re-applying an existing InferenceService must take field ownership instead of failing."
+  }
 }
 
 run "rejects_min_replicas_zero_without_scale_to_zero" {

@@ -1,0 +1,60 @@
+pipeline:
+  name: model-deploy
+  identifier: modeldeploy
+  projectIdentifier: Model_Deployment
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+    workspace: serve
+  description: Plan and apply the Qwen InferenceService through the qwen25-05b workspace.
+  stages:
+    - stage:
+        name: serve-model
+        identifier: servemodel
+        type: IACM
+        spec:
+          workspace: qwen25_05b
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: iacteamstandard
+              namespace: kserve-m0
+              automountServiceAccountToken: true
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: init
+                  identifier: init
+                  timeout: 10m
+                  spec:
+                    command: init
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: plan
+                  identifier: plan
+                  timeout: 15m
+                  spec:
+                    command: plan
+              - step:
+                  type: HarnessApproval
+                  name: approve-serve-plan
+                  identifier: approveserveplan
+                  timeout: 1d
+                  spec:
+                    approvalMessage: Review the serve plan and OPA result, then approve apply of the InferenceService.
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      userGroups:
+                        - _project_all_users
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: apply
+                  identifier: apply
+                  timeout: 15m
+                  spec:
+                    command: apply
+        tags: {}
