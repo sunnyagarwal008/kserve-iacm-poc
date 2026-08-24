@@ -3,6 +3,7 @@
 Root module for the `fraud-llm-staging` Harness IaCM serve workspace.
 
 - Repository path: `stacks/fraud-llm-staging`
+- Module source: IaCM registry `kserve-llm-inference-service/kubernetes` `v1.0.0`
 - Runtime: KubernetesDirect
 - Connector: `iacteamstandard`
 - Runner namespace: `kserve-m0`

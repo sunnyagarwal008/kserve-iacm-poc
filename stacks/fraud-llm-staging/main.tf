@@ -1,5 +1,6 @@
 module "serve" {
-  source = "../../modules/kserve-llm-inference-service"
+  source  = "qa.harness.io/25NKDX79QPC-YTyninmxRQu5st9wY_RziJH_pTw8_p2g/kserve-llm-inference-service/kubernetes"
+  version = "v1.0.0"
 
   name            = var.name
   namespace       = var.namespace

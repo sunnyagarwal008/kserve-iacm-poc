@@ -3,6 +3,7 @@
 Root module for the `kserve-platform-demo` Harness IaCM workspace.
 
 - Repository path: `stacks/kserve-platform-demo`
+- Module source: IaCM registry `kserve-platform/kubernetes` `v1.0.0`
 - Runtime: KubernetesDirect
 - Connector: `iacteamstandard`
 - Runner namespace: `kserve-m0`
