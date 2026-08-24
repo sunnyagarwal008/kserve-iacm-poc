@@ -1,0 +1,24 @@
+modules/kserve-platform/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-57
+modules/kserve-llm-inference-service/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "666ee83fa535a4eaf3c4baaabf6002d3c0026f2e",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 124,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
