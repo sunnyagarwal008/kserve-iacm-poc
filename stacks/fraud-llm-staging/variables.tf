@@ -44,3 +44,13 @@ variable "gpu_type" {
   type    = string
   default = "l4"
 }
+
+variable "team" {
+  type    = string
+  default = "ml-platform"
+}
+
+variable "cost_center" {
+  type    = string
+  default = "kserve-poc"
+}

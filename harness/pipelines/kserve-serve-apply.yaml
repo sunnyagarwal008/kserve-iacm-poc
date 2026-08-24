@@ -38,6 +38,19 @@ pipeline:
                   spec:
                     command: plan
               - step:
+                  type: HarnessApproval
+                  name: approve-serve-plan
+                  identifier: approveserveplan
+                  timeout: 1d
+                  spec:
+                    approvalMessage: Review the serve plan and OPA result, then approve apply of the InferenceService.
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      userGroups:
+                        - _project_all_users
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+              - step:
                   type: IACMOpenTofuPlugin
                   name: apply
                   identifier: apply

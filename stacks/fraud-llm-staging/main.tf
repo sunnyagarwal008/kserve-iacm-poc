@@ -9,4 +9,6 @@ module "serve" {
   max_replicas    = var.max_replicas
   gpu_count       = var.gpu_count
   gpu_type        = var.gpu_type
+  team            = var.team
+  cost_center     = var.cost_center
 }
