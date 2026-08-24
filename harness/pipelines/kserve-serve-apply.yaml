@@ -1,0 +1,47 @@
+pipeline:
+  name: kserve-serve-apply
+  identifier: kserveserveapply
+  projectIdentifier: sunnyplayground
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+    workspace: serve
+  description: Plan and apply a KServe InferenceService through the fraud-llm-staging workspace.
+  stages:
+    - stage:
+        name: serve-model
+        identifier: servemodel
+        type: IACM
+        spec:
+          workspace: fraudllmstaging
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: iacteamstandard
+              namespace: kserve-m0
+              automountServiceAccountToken: true
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: init
+                  identifier: init
+                  timeout: 10m
+                  spec:
+                    command: init
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: plan
+                  identifier: plan
+                  timeout: 15m
+                  spec:
+                    command: plan
+              - step:
+                  type: IACMOpenTofuPlugin
+                  name: apply
+                  identifier: apply
+                  timeout: 15m
+                  spec:
+                    command: apply
+        tags: {}
