@@ -1,0 +1,37 @@
+policies/kserve-serve-manifest.rego
+  c1876e3c-3edf-47f1-8482-07202bb843e3 21,23-27,68-75,82-88,109-117
+policies/kserve-serve-manifest_test.rego
+  c1876e3c-3edf-47f1-8482-07202bb843e3 36-40,46-55,61-64
+  c1876e3c-3edf-47f1-8482-07202bb843e3 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "c2cfc17b118d36fb3d1dcc2d7144ca3336af890c",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 3,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "ad96f667ce837ab2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c1876e3c-3edf-47f1-8482-07202bb843e3",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 128,
+      "total_deletions": 2,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
