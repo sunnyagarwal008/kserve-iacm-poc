@@ -1,0 +1,36 @@
+modules/kserve-platform/tests/platform.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 34-40
+  s_8acf769da20e95::t_447b8755cbc016 33
+modules/kserve-platform/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 35-38
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "f3b6ea6127e95c079c4e3317b68c06e166dea76a",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 11,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  },
+  "sessions": {
+    "s_8acf769da20e95": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cd33bded-3ba7-42fb-90f8-6b8e991410fa",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>"
+    }
+  }
+}
