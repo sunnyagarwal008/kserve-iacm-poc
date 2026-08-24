@@ -6,12 +6,12 @@ pipeline:
   tags:
     poc: kserve-iacm
     milestone: m0
-  description: Init/plan/apply on the testiacmnew cluster via account.k8connnew. Set offline_plan=false.
+  description: Init/plan/apply on GKE iac-team-standard via iacteamstandard. Set offline_plan=false.
   variables:
     - name: runner_namespace
       type: String
-      description: Namespace that can schedule the IaCM step pods (delegate cluster).
-      value: <+input>.default(harness-delegate-ng)
+      description: Namespace whose default service account runs the IaCM step pods.
+      value: <+input>.default(kserve-m0)
   stages:
     - stage:
         name: apply-on-cluster
@@ -23,7 +23,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: account.k8connnew
+              connectorRef: iacteamstandard
               namespace: <+pipeline.variables.runner_namespace>
               automountServiceAccountToken: true
               os: Linux

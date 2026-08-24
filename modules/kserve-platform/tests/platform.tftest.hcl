@@ -14,8 +14,13 @@ run "plans_standard_mode_install" {
   }
 
   assert {
-    condition     = helm_release.kserve_crd.version == var.kserve_version && helm_release.kserve_resources.version == var.kserve_version
-    error_message = "Both KServe charts must use the selected KServe version."
+    condition     = helm_release.kserve_runtime_configs.chart == "oci://ghcr.io/kserve/charts/kserve-runtime-configs"
+    error_message = "The platform must install KServe's built-in model runtimes."
+  }
+
+  assert {
+    condition     = helm_release.kserve_crd.version == var.kserve_version && helm_release.kserve_resources.version == var.kserve_version && helm_release.kserve_runtime_configs.version == var.kserve_version
+    error_message = "All KServe charts must use the selected KServe version."
   }
 
   assert {

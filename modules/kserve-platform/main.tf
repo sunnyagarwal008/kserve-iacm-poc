@@ -22,3 +22,13 @@ resource "helm_release" "kserve_resources" {
     value = "Standard"
   }
 }
+
+resource "helm_release" "kserve_runtime_configs" {
+  name       = "kserve-runtime-configs"
+  chart      = "oci://ghcr.io/kserve/charts/kserve-runtime-configs"
+  version    = var.kserve_version
+  namespace  = var.namespace
+  wait       = true
+  timeout    = 600
+  depends_on = [helm_release.kserve_resources]
+}
