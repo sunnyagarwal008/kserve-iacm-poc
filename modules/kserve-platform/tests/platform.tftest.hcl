@@ -30,4 +30,12 @@ run "plans_standard_mode_install" {
     ]) == "Standard"
     error_message = "KServe must use Standard mode so the POC does not require Knative."
   }
+
+  assert {
+    condition = one([
+      for setting in helm_release.kserve_runtime_configs.set :
+      setting.value if setting.name == "kserve.servingruntime.enabled"
+    ]) == "true"
+    error_message = "Built-in model runtimes must be enabled explicitly."
+  }
 }

@@ -31,4 +31,9 @@ resource "helm_release" "kserve_runtime_configs" {
   wait       = true
   timeout    = 600
   depends_on = [helm_release.kserve_resources]
+
+  set {
+    name  = "kserve.servingruntime.enabled"
+    value = "true"
+  }
 }
