@@ -34,19 +34,22 @@ pipeline:
                       spec:
                         script: |
                           set -euo pipefail
-                          MANIFEST_JSON=$(python3 - <<'PY'
-                          import json, urllib.request
-                          try:
-                              import yaml
-                          except ImportError:
-                              import subprocess, sys
-                              subprocess.check_call([sys.executable, "-m", "pip", "install", "--user", "pyyaml", "-q"])
-                              import yaml
                           url = "https://raw.githubusercontent.com/sunnyagarwal008/kserve-iacm-poc/main/cd/qwen25-05b/inferenceservice.yaml"
-                          doc = yaml.safe_load(urllib.request.urlopen(url, timeout=30).read())
-                          print(json.dumps(doc, separators=(",", ":")))
-                          PY
-                          )
+                          manifest=$(curl --fail --silent --show-error --location "$url")
+                          value() {
+                            printf '%s\n' "$manifest" | awk -F': ' -v pattern="$1" '$0 ~ pattern {print $2; exit}' | tr -d '"'
+                          }
+                          MANIFEST_JSON=$(printf \
+                            '{"apiVersion":"%s","kind":"%s","metadata":{"name":"%s","namespace":"%s","labels":{"team":"%s","cost_center":"%s"},"annotations":{"kserve.poc/gpu-count":"%s"}},"spec":{"predictor":{"maxReplicas":%s,"model":{"storageUri":"%s"}}}}' \
+                            "$(value '^apiVersion:')" \
+                            "$(value '^kind:')" \
+                            "$(value '^  name:')" \
+                            "$(value '^  namespace:')" \
+                            "$(value '^    team:')" \
+                            "$(value '^    cost_center:')" \
+                            "$(value '^    kserve.poc/gpu-count:')" \
+                            "$(value '^    maxReplicas:')" \
+                            "$(value '^      storageUri:')")
                           export MANIFEST_JSON
                     outputVariables:
                       - name: MANIFEST_JSON
