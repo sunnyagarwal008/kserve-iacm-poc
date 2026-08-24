@@ -1,0 +1,47 @@
+stacks/kserve-platform-demo/versions.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 9-12
+modules/kserve-platform/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-63,81,87-113
+stacks/kserve-platform-demo/outputs.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 16-29
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 15
+stacks/kserve-platform-demo/providers.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 11-15
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 10
+stacks/kserve-platform-demo/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 13-18
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 12
+modules/kserve-platform/versions.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 9-12
+modules/kserve-platform/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 18-35
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 17
+stacks/kserve-platform-demo/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 6
+stacks/kserve-platform-demo/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 11-14
+modules/kserve-platform/tests/platform.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 2,7-10,46-90
+modules/kserve-platform/outputs.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 16-29
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "da7e70a74ebbeac8029cf4e0e2afc05c9ea10b2c",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 210,
+      "total_deletions": 8,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
