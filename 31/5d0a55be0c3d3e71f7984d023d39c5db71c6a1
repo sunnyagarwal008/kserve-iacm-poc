@@ -1,0 +1,24 @@
+docs/superpowers/specs/2026-08-24-kserve-cd-service-design.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-150
+docs/superpowers/plans/2026-08-24-kserve-cd-service.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-737
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "315d0a55be0c3d3e71f7984d023d39c5db71c6a1",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 924,
+      "total_deletions": 37,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
