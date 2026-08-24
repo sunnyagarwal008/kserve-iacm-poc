@@ -1,0 +1,53 @@
+cd/qwen25-05b/README.md
+  410c8bc0-bfa2-4f66-ae87-fe89d056cf59 6-8
+  410c8bc0-bfa2-4f66-ae87-fe89d056cf59 5
+harness/cd/test_yaml_ids.py
+  410c8bc0-bfa2-4f66-ae87-fe89d056cf59 15-18
+harness/cd/service-qwen2505bcd.yaml
+  410c8bc0-bfa2-4f66-ae87-fe89d056cf59 25
+harness/pipelines/model-cd-deploy.yaml
+  410c8bc0-bfa2-4f66-ae87-fe89d056cf59 25-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "243a8d53bbd74970174e62387c82700edcd5d2e9",
+  "prompts": {
+    "0c3b18e38f07a80b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "410c8bc0-bfa2-4f66-ae87-fe89d056cf59",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 11,
+      "total_deletions": 3,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "63c0d74cfc8caf10": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "8b0cc457-e8dd-40a3-9206-cc3a4565a424",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 45,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 3,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
