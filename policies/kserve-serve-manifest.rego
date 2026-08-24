@@ -18,9 +18,13 @@ doc := input {
 	input.kind == "InferenceService"
 }
 
-storage_uri := doc.spec.predictor.model.storageUri
+predictor := object.get(object.get(doc, "spec", {}), "predictor", {})
 
-max_replicas := doc.spec.predictor.maxReplicas
+model := object.get(predictor, "model", {})
+
+storage_uri := object.get(model, "storageUri", null)
+
+max_replicas := object.get(predictor, "maxReplicas", null)
 
 gpu_count_raw := object.get(object.get(doc.metadata, "annotations", {}), "kserve.poc/gpu-count", "0")
 
@@ -61,12 +65,27 @@ deny[msg] {
 deny[msg] {
 	doc
 	max_replicas != null
+	not numeric(max_replicas)
+	msg := "maxReplicas must be numeric"
+}
+
+deny[msg] {
+	doc
+	max_replicas != null
+	numeric(max_replicas)
 	to_number(max_replicas) < 1
 	msg := "maxReplicas must be at least 1"
 }
 
 deny[msg] {
 	doc
+	not numeric(gpu_count_raw)
+	msg := "gpu_count must be numeric"
+}
+
+deny[msg] {
+	doc
+	numeric(gpu_count_raw)
 	to_number(gpu_count_raw) > gpu_count_ceiling
 	msg := sprintf("gpu_count %v exceeds the team ceiling of %v", [to_number(gpu_count_raw), gpu_count_ceiling])
 }
@@ -86,4 +105,13 @@ deny[msg] {
 nonempty(x) {
 	x != null
 	x != ""
+}
+
+numeric(x) {
+	is_number(x)
+}
+
+numeric(x) {
+	is_string(x)
+	to_number(x)
 }

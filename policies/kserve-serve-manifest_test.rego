@@ -33,14 +33,34 @@ test_denies_unlisted_model {
 	deny["model storageUri \"hf://evil/model\" is not on the serve allowlist"] with input as bad
 }
 
+test_denies_missing_storage_uri {
+	bad := json.patch(good, [{"op": "remove", "path": "/spec/predictor/model/storageUri"}])
+	deny["model storageUri must be set"] with input as bad
+}
+
 test_denies_max_replicas_zero {
 	bad := json.patch(good, [{"op": "replace", "path": "/spec/predictor/maxReplicas", "value": 0}])
 	deny["maxReplicas must be at least 1"] with input as bad
 }
 
+test_denies_missing_max_replicas {
+	bad := json.patch(good, [{"op": "remove", "path": "/spec/predictor/maxReplicas"}])
+	deny["maxReplicas must be set"] with input as bad
+}
+
+test_denies_nonnumeric_max_replicas {
+	bad := json.patch(good, [{"op": "replace", "path": "/spec/predictor/maxReplicas", "value": "many"}])
+	deny["maxReplicas must be numeric"] with input as bad
+}
+
 test_denies_gpu_over_ceiling {
 	bad := json.patch(good, [{"op": "replace", "path": "/metadata/annotations/kserve.poc~1gpu-count", "value": "8"}])
 	deny["gpu_count 8 exceeds the team ceiling of 4"] with input as bad
+}
+
+test_denies_nonnumeric_gpu_count {
+	bad := json.patch(good, [{"op": "replace", "path": "/metadata/annotations/kserve.poc~1gpu-count", "value": "many"}])
+	deny["gpu_count must be numeric"] with input as bad
 }
 
 test_denies_missing_team {
