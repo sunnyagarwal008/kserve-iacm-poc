@@ -22,4 +22,4 @@ service:
                   repoName: kserve-iacm-poc
                   branch: main
                   paths:
-                    - cd/qwen25-05b
+                    - cd/qwen25-05b/inferenceservice.yaml

@@ -12,7 +12,10 @@ class TestHarnessCdIds(unittest.TestCase):
         self.assertEqual(d["service"]["identifier"], "qwen2505bcd")
         self.assertEqual(d["service"]["serviceDefinition"]["type"], "Kubernetes")
         spec = d["service"]["serviceDefinition"]["spec"]["manifests"][0]["manifest"]["spec"]
-        self.assertEqual(spec["store"]["spec"]["paths"], ["cd/qwen25-05b"])
+        self.assertEqual(
+            spec["store"]["spec"]["paths"],
+            ["cd/qwen25-05b/inferenceservice.yaml"],
+        )
 
     def test_env_and_infra(self):
         env = yaml.safe_load((ROOT / "environment-kservestaging.yaml").read_text())

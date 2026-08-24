@@ -22,6 +22,9 @@ pipeline:
               - identifier: kservem0
           execution:
             steps:
+              # Policy evaluates a curl + awk reconstructed nine-field JSON subset, not the full
+              # multi-document YAML K8sApply applies. Keep one InferenceService document in
+              # inferenceservice.yaml; do not add a second document named qwen25-05b.
               - step:
                   type: ShellScript
                   name: read-manifest
