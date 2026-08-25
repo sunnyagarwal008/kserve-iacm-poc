@@ -18,10 +18,10 @@ locals {
         maxReplicas = var.max_replicas
         model = {
           modelFormat = {
-            name = "huggingface"
+            name = var.model_format
           }
           args = [
-            "--backend=huggingface",
+            "--backend=${var.backend}",
           ]
           storageUri = var.model_uri
           resources = {

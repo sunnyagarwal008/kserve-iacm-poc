@@ -1,6 +1,6 @@
 # kserve-llm-inference-service
 
-Applies a KServe `InferenceService` for a Hugging Face LLM.
+Applies a KServe `InferenceService` for an LLM.
 
 This is the per-model serve module. The KServe control plane and ingress come
 from `kserve-platform`.
@@ -8,7 +8,7 @@ from `kserve-platform`.
 ## What it creates
 
 - One `InferenceService` (`serving.kserve.io/v1beta1`) via server-side apply
-- Hugging Face backend (`--backend=huggingface`)
+- Configurable `modelFormat` and `--backend` (defaults remain Hugging Face)
 - Public URL `http://<name>-<namespace>.<ingress_domain>`
 
 `gpu_count` / `gpu_type` are declared for cost and OPA only. This module does
@@ -19,11 +19,13 @@ not request `nvidia.com/gpu`.
 ```hcl
 module "serve" {
   source  = "app.harness.io/<account_id>/kserve-llm-inference-service/kubernetes"
-  version = "1.0.0"
+  version = "1.1.0"
 
   name           = "qwen25-05b"
   namespace      = "kserve-m0"
   model_uri      = "hf://Qwen/Qwen2.5-0.5B-Instruct"
+  model_format   = "huggingface"
+  backend        = "huggingface"
   ingress_domain = "8.231.51.197.sslip.io"
   min_replicas   = 1
   max_replicas   = 1
@@ -40,7 +42,9 @@ On Harness QA, replace `app.harness.io` with `qa.harness.io`.
 |---|---|---|
 | `name` | InferenceService name and hostname prefix | `qwen25-05b` |
 | `namespace` | Namespace the runner can write | `kserve-m0` |
-| `model_uri` | Hugging Face URI (`hf://...`) | `hf://Qwen/Qwen2.5-0.5B-Instruct` |
+| `model_uri` | Model URI (`hf://`, `pvc://`, `s3://`, ...) | `hf://Qwen/Qwen2.5-0.5B-Instruct` |
+| `model_format` | KServe `modelFormat.name` | `huggingface` |
+| `backend` | Predictor `--backend` | `huggingface` |
 | `ingress_domain` | DNS suffix from the platform workspace | `""` |
 | `min_replicas` / `max_replicas` | Replica bounds | `1` / `1` |
 | `gpu_count` / `gpu_type` | Declared GPU intent for policy/cost | `0` / `l4` |
@@ -57,6 +61,7 @@ On Harness QA, replace `app.harness.io` with `qa.harness.io`.
 | `inference_service_name` | Kubernetes name |
 | `inference_service_namespace` | Namespace |
 | `model_uri` | Declared model URI |
+| `model_format` / `backend` | Declared runtime |
 | `gpu_type` / `gpu_count` | Declared GPU intent |
 
 ## Requirements

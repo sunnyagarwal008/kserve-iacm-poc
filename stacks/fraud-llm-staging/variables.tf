@@ -19,6 +19,18 @@ variable "model_uri" {
   default     = "hf://Qwen/Qwen2.5-0.5B-Instruct"
 }
 
+variable "model_format" {
+  type        = string
+  description = "KServe modelFormat.name."
+  default     = "huggingface"
+}
+
+variable "backend" {
+  type        = string
+  description = "Predictor --backend argument."
+  default     = "huggingface"
+}
+
 variable "ingress_domain" {
   type        = string
   description = "Public DNS suffix from kserve-platform-demo (typically <lb-ip>.sslip.io)."

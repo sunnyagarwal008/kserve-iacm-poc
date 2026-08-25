@@ -17,8 +17,30 @@ variable "namespace" {
 
 variable "model_uri" {
   type        = string
-  description = "Model URI. Hugging Face Hub uses the hf:// scheme."
+  description = "Model URI (for example hf://..., pvc://..., or s3://...)."
   default     = "hf://Qwen/Qwen2.5-0.5B-Instruct"
+}
+
+variable "model_format" {
+  type        = string
+  description = "KServe modelFormat.name (huggingface, sklearn, pytorch, ...)."
+  default     = "huggingface"
+
+  validation {
+    condition     = length(var.model_format) > 0
+    error_message = "model_format must be a non-empty KServe model format name."
+  }
+}
+
+variable "backend" {
+  type        = string
+  description = "Predictor --backend argument (huggingface, vllm, ...)."
+  default     = "huggingface"
+
+  validation {
+    condition     = length(var.backend) > 0
+    error_message = "backend must be a non-empty KServe backend name."
+  }
 }
 
 variable "ingress_domain" {

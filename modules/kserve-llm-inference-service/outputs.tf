@@ -32,3 +32,13 @@ output "model_uri" {
   description = "Declared model URI."
   value       = var.model_uri
 }
+
+output "model_format" {
+  description = "Declared KServe model format."
+  value       = var.model_format
+}
+
+output "backend" {
+  description = "Declared predictor backend."
+  value       = var.backend
+}

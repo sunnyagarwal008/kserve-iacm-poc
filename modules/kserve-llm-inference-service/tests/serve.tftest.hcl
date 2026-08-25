@@ -60,6 +60,33 @@ run "plans_qwen_cpu_huggingface" {
   }
 }
 
+run "plans_custom_model_format_and_backend" {
+  command = plan
+
+  variables {
+    name         = "qwen25-05b"
+    namespace    = "kserve-m0"
+    model_uri    = "hf://Qwen/Qwen2.5-0.5B-Instruct"
+    model_format = "pytorch"
+    backend      = "vllm"
+  }
+
+  assert {
+    condition     = local.inference_service.spec.predictor.model.modelFormat.name == "pytorch"
+    error_message = "model_format must flow through to modelFormat.name."
+  }
+
+  assert {
+    condition     = contains(local.inference_service.spec.predictor.model.args, "--backend=vllm")
+    error_message = "backend must flow through to --backend, not stay hardcoded to huggingface."
+  }
+
+  assert {
+    condition     = !contains(local.inference_service.spec.predictor.model.args, "--backend=huggingface")
+    error_message = "The Hugging Face backend must not remain when backend is vllm."
+  }
+}
+
 run "rejects_min_replicas_zero_without_scale_to_zero" {
   command = plan
 
