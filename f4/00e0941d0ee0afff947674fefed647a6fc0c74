@@ -1,0 +1,65 @@
+modules/kserve-llm-inference-service/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 20,24-44
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 45
+modules/kserve-llm-inference-service/outputs.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 36-44
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 35
+stacks/fraud-llm-staging/main.tf
+  s_a40575898a4282::t_3addfd4efe3cbd 3
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 8-9
+modules/kserve-llm-inference-service/tests/serve.tftest.hcl
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 63-88
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 89
+modules/kserve-llm-inference-service/main.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 21,24
+stacks/fraud-llm-staging/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 10
+  s_a40575898a4282::t_3addfd4efe3cbd 6
+modules/kserve-llm-inference-service/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 3,11,27-28,45-47,64
+  s_a40575898a4282::t_3addfd4efe3cbd 22
+stacks/fraud-llm-staging/variables.tf
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 22-32
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "f400e0941d0ee0afff947674fefed647a6fc0c74",
+  "prompts": {
+    "0c3b18e38f07a80b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "410c8bc0-bfa2-4f66-ae87-fe89d056cf59",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 93,
+      "total_deletions": 20,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  },
+  "sessions": {
+    "s_a40575898a4282": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>"
+    }
+  }
+}
