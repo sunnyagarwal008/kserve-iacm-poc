@@ -6,14 +6,20 @@ pipeline:
   tags:
     poc: kserve-iacm
     workspace: serve
-  description: Plan and apply the Qwen InferenceService through the qwen25-05b workspace.
+  description: Plan and apply a KServe InferenceService workspace. Pass the workspace identifier at runtime.
+  variables:
+    - name: workspace
+      type: String
+      description: IaCM serve workspace to init, plan, and apply.
+      value: <+input>
+      default: qwen25_05b
   stages:
     - stage:
         name: serve-model
         identifier: servemodel
         type: IACM
         spec:
-          workspace: qwen25_05b
+          workspace: <+pipeline.variables.workspace>
           infrastructure:
             type: KubernetesDirect
             spec:

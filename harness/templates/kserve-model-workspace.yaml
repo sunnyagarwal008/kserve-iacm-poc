@@ -1,0 +1,85 @@
+template:
+  name: kserve-model-workspace
+  identifier: kservemodelworkspace
+  versionLabel: v1
+  type: Workspace
+  projectIdentifier: Model_Deployment
+  orgIdentifier: default
+  tags:
+    poc: kserve-iacm
+  description: Blueprint for a KServe InferenceService workspace. Copy or link it, then set name, model_uri, model_format, and backend.
+  spec:
+    provisioner:
+      type: opentofu
+      version: "1.11.2"
+      locked: true
+    repository:
+      connector: sunnygithub
+      name: kserve-iacm-poc
+      gitFetchType: Branch
+      branch: main
+      path: stacks/fraud-llm-staging
+      locked: true
+    default_pipelines:
+      apply: modeldeploy
+      locked: false
+    variables:
+      - name: TF_TOKEN_qa_harness_io
+        type: Secret
+        value: iacm_registry_pat
+        description: PAT for the account-scoped IaCM module registry.
+        locked: true
+    terraform_variables:
+      - name: name
+        type: String
+        value: qwen25-05b
+        description: InferenceService name and hostname prefix.
+        locked: false
+      - name: namespace
+        type: String
+        value: kserve-m0
+        locked: true
+      - name: model_uri
+        type: String
+        value: hf://Qwen/Qwen2.5-0.5B-Instruct
+        locked: false
+      - name: model_format
+        type: String
+        value: huggingface
+        locked: false
+      - name: backend
+        type: String
+        value: huggingface
+        locked: false
+      - name: ingress_domain
+        type: String
+        value: 8.231.51.197.sslip.io
+        locked: false
+      - name: min_replicas
+        type: Number
+        value: "1"
+        locked: false
+      - name: max_replicas
+        type: Number
+        value: "1"
+        locked: false
+      - name: gpu_count
+        type: Number
+        value: "0"
+        locked: false
+      - name: gpu_type
+        type: String
+        value: l4
+        locked: false
+      - name: team
+        type: String
+        value: ml-platform
+        locked: false
+      - name: cost_center
+        type: String
+        value: kserve-poc
+        locked: false
+      - name: offline_plan
+        type: String
+        value: "false"
+        locked: true
