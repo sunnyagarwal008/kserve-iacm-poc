@@ -1,0 +1,26 @@
+harness/pipelines/model-deploy.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 9-15,22
+harness/templates/README.md
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-11
+harness/templates/kserve-model-workspace.yaml
+  d45dfd78-9d75-4bc3-99bd-b66003c149cb 1-85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "c68d006654728e5aeb069b88b422a48349009fa9",
+  "prompts": {
+    "a40575898a4282cd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d45dfd78-9d75-4bc3-99bd-b66003c149cb",
+        "model": "auto-smart"
+      },
+      "human_author": "Sunny Agarwal <sunny.agarwal@harness.io>",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
