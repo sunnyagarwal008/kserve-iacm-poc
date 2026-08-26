@@ -1,3 +1,5 @@
+# Unused by model-cd-deploy. Policy set is disabled in QA; keep the Rego
+# if you re-enable a Custom On Step policy with a JSON payload.
 policy:
   identifier: kserveservemanifest
   name: kserve-serve-manifest

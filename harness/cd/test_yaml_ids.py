@@ -32,9 +32,13 @@ class TestHarnessCdIds(unittest.TestCase):
         self.assertEqual(p["pipeline"]["identifier"], "modelcddeploy")
         steps = p["pipeline"]["stages"][0]["stage"]["spec"]["execution"]["steps"]
         types = [s["step"]["type"] for s in steps]
-        self.assertEqual(types, ["ShellScript", "Policy", "HarnessApproval", "K8sApply"])
-        apply = steps[3]["step"]["spec"]
+        self.assertEqual(types, ["HarnessApproval", "K8sApply"])
+        apply = steps[1]["step"]["spec"]
         self.assertTrue(apply["skipSteadyStateCheck"])
+        self.assertEqual(
+            apply["filePaths"],
+            ["cd/qwen25-05b/inferenceservice.yaml"],
+        )
 
 
 if __name__ == "__main__":

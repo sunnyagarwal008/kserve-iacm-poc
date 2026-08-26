@@ -5,7 +5,7 @@ pipeline:
   orgIdentifier: default
   tags:
     poc: kserve-cd
-  description: Deploy the qwen25-05b-cd InferenceService via Kubernetes Apply with Custom OPA.
+  description: Deploy the qwen25-05b-cd InferenceService via Kubernetes Apply. Service On Save OPA checks Git/K8s shape; IaCM plan OPA still owns model allowlist.
   stages:
     - stage:
         name: deploy-model
@@ -22,61 +22,13 @@ pipeline:
               - identifier: kservem0
           execution:
             steps:
-              # Policy evaluates a curl + awk reconstructed nine-field JSON subset, not the full
-              # multi-document YAML K8sApply applies. Keep one InferenceService document in
-              # inferenceservice.yaml; do not add a second document named qwen25-05b.
-              - step:
-                  type: ShellScript
-                  name: read-manifest
-                  identifier: readmanifest
-                  timeout: 5m
-                  spec:
-                    shell: Bash
-                    source:
-                      type: Inline
-                      spec:
-                        script: |
-                          set -euo pipefail
-                          url="https://raw.githubusercontent.com/sunnyagarwal008/kserve-iacm-poc/main/cd/qwen25-05b/inferenceservice.yaml"
-                          manifest=$(curl --fail --silent --show-error --location "$url")
-                          value() {
-                            printf '%s\n' "$manifest" | awk -F': ' -v pattern="$1" '$0 ~ pattern {print $2; exit}' | tr -d '"'
-                          }
-                          MANIFEST_JSON=$(printf \
-                            '{"apiVersion":"%s","kind":"%s","metadata":{"name":"%s","namespace":"%s","labels":{"team":"%s","cost_center":"%s"},"annotations":{"kserve.poc/gpu-count":"%s"}},"spec":{"predictor":{"maxReplicas":%s,"model":{"storageUri":"%s"}}}}' \
-                            "$(value '^apiVersion:')" \
-                            "$(value '^kind:')" \
-                            "$(value '^  name:')" \
-                            "$(value '^  namespace:')" \
-                            "$(value '^    team:')" \
-                            "$(value '^    cost_center:')" \
-                            "$(value '^    kserve.poc/gpu-count:')" \
-                            "$(value '^    maxReplicas:')" \
-                            "$(value '^      storageUri:')")
-                          export MANIFEST_JSON
-                    outputVariables:
-                      - name: MANIFEST_JSON
-                        type: String
-                        value: MANIFEST_JSON
-                    onDelegate: true
-              - step:
-                  type: Policy
-                  name: evaluate-serve-opa
-                  identifier: evaluateserveopa
-                  timeout: 5m
-                  spec:
-                    policySets:
-                      - kserveservemanifest
-                    type: Custom
-                    policySpec:
-                      payload: <+steps.readmanifest.output.outputVariables.MANIFEST_JSON>
               - step:
                   type: HarnessApproval
                   name: approve-cd-apply
                   identifier: approvecdapply
                   timeout: 1d
                   spec:
-                    approvalMessage: Review CD OPA result, then apply qwen25-05b-cd.
+                    approvalMessage: Review CD apply of qwen25-05b-cd (Service On Save OPA; Git manifest is not evaluated here).
                     includePipelineExecutionHistory: true
                     approvers:
                       userGroups:
@@ -92,7 +44,7 @@ pipeline:
                     skipDryRun: false
                     skipSteadyStateCheck: true
                     filePaths:
-                      - inferenceservice.yaml
+                      - cd/qwen25-05b/inferenceservice.yaml
           rollbackSteps: []
         failureStrategies:
           - onFailure:

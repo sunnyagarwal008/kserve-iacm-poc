@@ -1,0 +1,17 @@
+policy:
+  identifier: kserveserveservice
+  name: kserve-serve-service
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  type: service
+  file: policies/kserve-serve-service.rego
+policySet:
+  identifier: kserveserveservice
+  name: kserve-serve-service
+  orgIdentifier: default
+  projectIdentifier: Model_Deployment
+  type: service
+  action: onsave
+  enforcement: error
+  policies:
+    - identifier: kserveserveservice
