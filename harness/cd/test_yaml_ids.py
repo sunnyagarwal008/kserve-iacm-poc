@@ -32,12 +32,25 @@ class TestHarnessCdIds(unittest.TestCase):
         self.assertEqual(p["pipeline"]["identifier"], "modelcddeploy")
         steps = p["pipeline"]["stages"][0]["stage"]["spec"]["execution"]["steps"]
         types = [s["step"]["type"] for s in steps]
-        self.assertEqual(types, ["HarnessApproval", "K8sApply"])
+        self.assertEqual(types, ["HarnessApproval", "K8sApply", "ShellScript"])
         apply = steps[1]["step"]["spec"]
         self.assertTrue(apply["skipSteadyStateCheck"])
         self.assertEqual(
             apply["filePaths"],
             ["cd/qwen25-05b/inferenceservice.yaml"],
+        )
+        vars_by_name = {v["name"]: v for v in p["pipeline"]["variables"]}
+        self.assertEqual(
+            vars_by_name["ingress_domain"]["value"],
+            "8.231.51.197.sslip.io",
+        )
+        publish = steps[2]["step"]
+        self.assertEqual(publish["identifier"], "publishendpoint")
+        outputs = publish["spec"]["outputVariables"]
+        self.assertEqual(outputs[0]["name"], "endpoint_url")
+        self.assertIn(
+            "http://qwen25-05b-cd-kserve-m0.<+pipeline.variables.ingress_domain>",
+            publish["spec"]["source"]["spec"]["script"],
         )
 
 

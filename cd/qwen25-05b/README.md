@@ -10,4 +10,6 @@ Governance split:
 
 `policies/kserve-serve-manifest.rego` is unused by the CD pipeline (Custom On Step needed a JSON payload; we dropped the Shell reconstruction). Keep it as the CR-shaped rule set if you re-enable a Custom Policy step later.
 
+After Apply, `modelcddeploy` runs Shell step `publishendpoint`. It exports `endpoint_url` as `http://qwen25-05b-cd-kserve-m0.<ingress_domain>` (pipeline variable, default `8.231.51.197.sslip.io`). That is a constructed origin, not a probed KServe status URL and not `/openai/v1/chat/completions`. Keep `ingress_domain` aligned with `kserve-platform-demo`.
+
 With OPA 1.19, run policy tests as `opa test policies/ --v0-compatible`.

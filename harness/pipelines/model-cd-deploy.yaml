@@ -45,6 +45,27 @@ pipeline:
                     skipSteadyStateCheck: true
                     filePaths:
                       - cd/qwen25-05b/inferenceservice.yaml
+              - step:
+                  type: ShellScript
+                  name: publish-endpoint
+                  identifier: publishendpoint
+                  timeout: 10m
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          endpoint_url="http://qwen25-05b-cd-kserve-m0.<+pipeline.variables.ingress_domain>"
+                          export endpoint_url
+                          echo "Constructed origin from platform ingress (not probed): ${endpoint_url}"
+                    environmentVariables: []
+                    outputVariables:
+                      - name: endpoint_url
+                        type: String
+                        value: endpoint_url
           rollbackSteps: []
         failureStrategies:
           - onFailure:
@@ -53,3 +74,8 @@ pipeline:
               action:
                 type: StageRollback
         tags: {}
+  variables:
+    - name: ingress_domain
+      type: String
+      description: Public DNS suffix from kserve-platform-demo (typically <lb-ip>.sslip.io). Keep in sync with the platform workspace.
+      value: 8.231.51.197.sslip.io
